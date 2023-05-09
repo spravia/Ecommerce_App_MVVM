@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -50,7 +52,7 @@ fun RegisterContet(paddingValues: PaddingValues){
         Image(modifier = Modifier ,painter = painterResource(id = R.drawable.banner), contentDescription = "", contentScale = ContentScale.Crop,
                        colorFilter =  ColorFilter.colorMatrix(ColorMatrix().apply { setToScale(0.6f,0.6f,0.6f, 0.6f) }))
 
-        Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally)
+        Column(modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally)
         {
            Row(modifier = Modifier.fillMaxWidth().padding(top = 35.dp),
                verticalAlignment = Alignment.CenterVertically,

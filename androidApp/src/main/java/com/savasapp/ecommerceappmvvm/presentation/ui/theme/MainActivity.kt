@@ -12,8 +12,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.savasapp.ecommerceappmvvm.android.MyApplicationTheme
 import com.savasapp.ecommerceappmvvm.presentation.navigation.graph.RootNavGraph
-import com.savasapp.ecommerceappmvvm.presentation.screens.auth.LoginScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController : NavHostController
