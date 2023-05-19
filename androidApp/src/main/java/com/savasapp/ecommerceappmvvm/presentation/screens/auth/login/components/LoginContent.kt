@@ -49,6 +49,8 @@ fun LoginContent(navController: NavHostController,
                  paddingValues: PaddingValues ,
                  vm : LoginViewModel = hiltViewModel()){
 
+    val state = vm.state
+
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
         .fillMaxSize()){
@@ -61,7 +63,7 @@ fun LoginContent(navController: NavHostController,
         Column(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 150.dp)
-            .verticalScroll(rememberScrollState()),
+            ,
             horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 modifier = Modifier
@@ -85,7 +87,7 @@ fun LoginContent(navController: NavHostController,
                 backgroundColor = Color.White.copy(alpha = 0.5f),
 
                 ) {
-                Column (modifier = Modifier.padding(10.dp)) {
+                Column (modifier = Modifier.padding(10.dp).verticalScroll(rememberScrollState())) {
                     Text(modifier = Modifier.padding(bottom = 20.dp),
                         text = "Sing in",
                         fontWeight = FontWeight.Bold,
@@ -93,18 +95,18 @@ fun LoginContent(navController: NavHostController,
                         color = Color.Black)
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.email,
+                        value = state.email,
                         label = "Correo Electronico",
                         icon = Icons.Default.Email,
-                        onValueChange = { vm.email = it },
+                        onValueChange = { vm.onEmailInput(it) },
                         keyboardType = KeyboardType.Email
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.password,
+                        value = state.password,
                         label = "Password",
                         icon = Icons.Default.Email,
-                        onValueChange = { vm.password = it },
+                        onValueChange = { vm.onPasswordInput(it) },
                         keyboardType = KeyboardType.Password
                     )
 

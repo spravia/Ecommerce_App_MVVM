@@ -37,108 +37,158 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.savasapp.ecommerceappmvvm.android.R
 import com.savasapp.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components.DefaultButton
+import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.RegisterViewModel
 
 
 @Composable
-fun RegisterContet(paddingValues: PaddingValues){
+fun RegisterContet(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()) {
 
-    Box(modifier = Modifier
-        .padding(paddingValues = paddingValues)
-        .fillMaxSize())
+    val state = vm.state
+
+    Box(
+        modifier = Modifier
+            .padding(paddingValues = paddingValues)
+            .fillMaxSize()
+    )
     {
-        Image(modifier = Modifier ,painter = painterResource(id = R.drawable.banner), contentDescription = "", contentScale = ContentScale.Crop,
-                       colorFilter =  ColorFilter.colorMatrix(ColorMatrix().apply { setToScale(0.6f,0.6f,0.6f, 0.6f) }))
+        Image(modifier = Modifier,
+            painter = painterResource(id = R.drawable.banner),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                setToScale(
+                    0.6f,
+                    0.6f,
+                    0.6f,
+                    0.6f
+                )
+            })
+        )
 
-        Column(modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
         {
-           Row(modifier = Modifier.fillMaxWidth().padding(top = 35.dp),
-               verticalAlignment = Alignment.CenterVertically,
-               horizontalArrangement = Arrangement.Center)
-           {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 35.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            )
+            {
 
-            Image(modifier = Modifier
-                .height(80.dp)
-                .width(80.dp),
-                painter = painterResource(id = R.drawable.user_form), contentDescription = "")
+                Image(
+                    modifier = Modifier
+                        .height(80.dp)
+                        .width(80.dp),
+                    painter = painterResource(id = R.drawable.user_form), contentDescription = ""
+                )
 
-            Text( modifier = Modifier.padding(top = 7.dp, start = 10.dp), text = "Ingresa esta informaciòn", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.White)
+                Text(
+                    modifier = Modifier.padding(top = 7.dp, start = 10.dp),
+                    text = "Ingresa esta informaciòn",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    color = Color.White
+                )
 
             }
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Card(modifier = Modifier.fillMaxWidth(),
-                 shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp),
-                 backgroundColor = Color.White.copy(alpha = 0.8f))
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp),
+                backgroundColor = Color.White.copy(alpha = 0.8f)
+            )
             {
-                Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp, bottom = 15.dp )) {
+                Column(
+                    modifier = Modifier
+                        .padding(
+                            top = 30.dp,
+                            start = 30.dp,
+                            end = 30.dp,
+                            bottom = 15.dp
+                        )
+                        .verticalScroll(rememberScrollState())
+                )
+                {
 
-                    Text(modifier = Modifier.padding(bottom = 10.dp),
-                         text = "Registate",
-                         fontWeight = FontWeight.Bold,
-                         fontSize = 20.sp,
-                         color = Color.Black)
+                    Text(
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        text = "Registate",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.name,
                         label = "Nombres",
-                        icon =  Icons.Default.Person,
-                        onValueChange = { }
+                        icon = Icons.Default.Person,
+                        onValueChange = { vm.onNameInput(it) }
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.lastName,
                         label = "Apellidos",
-                        icon =  Icons.Outlined.Person,
-                        onValueChange = { }
+                        icon = Icons.Outlined.Person,
+                        onValueChange = { vm.onLastNameInput(it) }
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.email,
                         label = "Correo electronico",
-                        icon =  Icons.Default.Email,
-                        onValueChange = { },
+                        icon = Icons.Default.Email,
+                        onValueChange = { vm.onEmailInput(it) },
                         keyboardType = KeyboardType.Email
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.phone,
                         label = "Telefono",
-                        icon =  Icons.Default.Phone,
-                        onValueChange = { },
+                        icon = Icons.Default.Phone,
+                        onValueChange = { vm.onPhoneInput(it) },
                         keyboardType = KeyboardType.Number
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.password,
                         label = "Contraseña",
-                        icon =  Icons.Default.Lock,
-                        onValueChange = { },
-                        keyboardType = KeyboardType.Password
+                        icon = Icons.Default.Lock,
+                        onValueChange = { vm.onPasswordInput(it) },
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "" ,
+                        value = state.confimPassword,
                         label = "Confirmar Contraseña",
-                        icon =  Icons.Default.Lock,
-                        onValueChange = { },
-                        keyboardType = KeyboardType.Password
+                        icon = Icons.Default.Lock,
+                        onValueChange = { vm.onConfirmPasswordInput(it) },
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
-                    
+
                     Spacer(modifier = Modifier.height(5.dp))
 
                     DefaultButton(modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp), text = "Confirmar" , onClick = {  })
+                        .height(60.dp), text = "Confirmar", onClick = { })
                 }
             }
         }
@@ -149,10 +199,10 @@ fun RegisterContet(paddingValues: PaddingValues){
 
 @Preview
 @Composable
-fun PreviewRegisterContent(){
+fun PreviewRegisterContent() {
 
     Scaffold() { paddingValues ->
-            RegisterContet(paddingValues = paddingValues)
+        RegisterContet(paddingValues = paddingValues)
     }
 
 }

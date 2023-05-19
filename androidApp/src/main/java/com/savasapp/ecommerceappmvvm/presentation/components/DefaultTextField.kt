@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 
 @Composable
 fun DefaultTextField(
@@ -19,9 +21,11 @@ fun DefaultTextField(
     icon : ImageVector,
     keyboardType: KeyboardType = KeyboardType.Text,   //Tipo de teclado para el TextBox
     onValueChange : (String) -> Unit,
+    hideText : Boolean = false
 ){
 
-    OutlinedTextField(modifier = modifier.fillMaxWidth(), value = value,
+    OutlinedTextField(
+        modifier = modifier.fillMaxWidth(), value = value,
         onValueChange = {
                         onValueChange(it)
         },
@@ -31,6 +35,7 @@ fun DefaultTextField(
                 contentDescription = "",
                 tint = Color.Cyan)
         },
-        keyboardOptions =  KeyboardOptions(keyboardType = keyboardType)
+        keyboardOptions =  KeyboardOptions(keyboardType = keyboardType),
+        visualTransformation = if (hideText) PasswordVisualTransformation() else VisualTransformation.None
     )
 }

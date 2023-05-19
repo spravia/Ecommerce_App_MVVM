@@ -51,7 +51,6 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
 
-
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //Para crear el gràfico de navegaciòn
@@ -60,6 +59,13 @@ dependencies {
     //Hilt Dagger
     implementation("com.google.dagger:hilt-android:2.44.2")
      kapt("com.google.dagger:hilt-android-compiler:2.44.2")
+
+    //GSON convertir objetos que llegan en JSON hacia objetos  y
+    //Retrofit  Para hacer peticiones al server
+    implementation("com.squareup.retrofit2:retrofit:2.9.0:")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0:")
+
 }
 
 
