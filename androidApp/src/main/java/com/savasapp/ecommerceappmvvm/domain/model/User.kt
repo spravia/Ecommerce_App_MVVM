@@ -5,11 +5,12 @@ import com.google.gson.annotations.SerializedName
 
 data class User(
     @SerializedName("id") val id: String? = null,
-    @SerializedName("name") val name : String,
-    @SerializedName("lastname") val lastname : String,
+    @SerializedName("nombres") val name : String,
+    @SerializedName("apellidos") val lastname : String,
     @SerializedName("email") val email : String,
-    @SerializedName("phone") val phone: String,
-    @SerializedName("password") val password : String
+    @SerializedName("telefono") val phone: String,
+    @SerializedName("password") val password : String,
+    @SerializedName("roles") val roles : String
 ){
     fun toJson(): String = Gson().toJson(this)
 

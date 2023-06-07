@@ -1,9 +1,11 @@
 import com.savasapp.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
 import com.savasapp.ecommerceappmvvm.data.service.AuthService
-import com.savasapp.ecommerceappmvvm.domain.model.User
-import retrofit2.Response
+import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components.LoginState
 
-class AuthRemoteDataSourceImpl(private val authService: AuthService) : AuthRemoteDataSource {
 
-    override suspend fun login(email : String, password : String) = authService.login(email, password)
+class AuthRemoteDataSourceImpl(private val authService: AuthService) : AuthRemoteDataSource
+{
+    override suspend fun login(loginData : LoginState  ) =  authService.login(loginData)
+       // , password
+
 }

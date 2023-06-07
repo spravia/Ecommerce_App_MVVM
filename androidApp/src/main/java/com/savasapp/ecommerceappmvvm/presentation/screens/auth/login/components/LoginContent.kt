@@ -21,10 +21,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,7 +33,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import com.savasapp.ecommerceappmvvm.android.Blue500
 import com.savasapp.ecommerceappmvvm.android.R
@@ -116,7 +111,7 @@ fun LoginContent(navController: NavHostController,
                         .fillMaxWidth()
                         .height(50.dp),
                                   text = "Login",
-                                  onClick = {  }
+                                  onClick = { vm.login() }
                     )
                     Row(modifier = Modifier
                         .fillMaxWidth()

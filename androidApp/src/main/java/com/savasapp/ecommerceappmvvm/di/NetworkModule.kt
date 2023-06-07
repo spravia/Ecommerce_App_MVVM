@@ -8,8 +8,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 import javax.inject.Singleton
 
+  //https://www.youtube.com/watch?v=KA0M0xqQ0F0
+
+  //https://www.youtube.com/watch?v=kKWYaQgu1Lw
 @Module
 @InstallIn( SingletonComponent::class)
 object NetworkModule {
@@ -18,6 +22,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit() : Retrofit {
+
         return Retrofit
             .Builder()
             .baseUrl(Config.BASE_URL)
