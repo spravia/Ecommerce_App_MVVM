@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components
+package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login
 
 data class LoginState(
     val email : String = "",

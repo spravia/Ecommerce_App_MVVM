@@ -1,7 +1,7 @@
 package com.savasapp.ecommerceappmvvm.data.service
 
 import com.savasapp.ecommerceappmvvm.domain.model.User
-import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components.LoginState
+import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.LoginState
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -14,7 +14,7 @@ interface AuthService {
 
     @POST("api/users")
     @Headers("Content-Type:application/json; charset=utf-8")
-    suspend fun login(@Body loginData : LoginState ): Response<User>
+    suspend fun login(@Body loginData : LoginState): Response<User>
 
 }
 

@@ -7,6 +7,7 @@ import androidx.navigation.navigation
 import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.LoginScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.RegisterScreen
+import com.savasapp.ecommerceappmvvm.presentation.screens.home.HomeScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
 
@@ -15,10 +16,12 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
             LoginScreen(navController)
         }
 
-
         composable(route = AuthScreen.Register.route){
             RegisterScreen(navController)
         }
-    }
 
+        composable(route = AuthScreen.Home.route){
+            HomeScreen(navController)
+        }
+    }
 }

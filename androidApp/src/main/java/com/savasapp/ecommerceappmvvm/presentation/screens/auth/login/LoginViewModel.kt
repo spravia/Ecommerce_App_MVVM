@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components
+package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.savasapp.ecommerceappmvvm.domain.model.User
-import com.savasapp.ecommerceappmvvm.domain.repository.Result
+import com.savasapp.ecommerceappmvvm.domain.repository.Resource
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,14 +24,14 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase)  
     //var password by  mutableStateOf("")
 
     var errorMessage by mutableStateOf("")
-        private set
-    var loginResponse by mutableStateOf<Result<User>?>(null)
+
+    var loginResponse by mutableStateOf<Resource<User>?>(null)
             private set
 
     fun login() = viewModelScope.launch {
 
         if(isValidateForm()){
-            loginResponse = Result.Loading   //waiting
+            loginResponse = Resource.Loading   //waiting
             val loginData = LoginState(state.email, state.password)
             val result = authUseCase.login(loginData )   //return a response
             loginResponse = result   //sucessed or failed
@@ -49,16 +49,21 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase)  
 
     private fun isValidateForm() : Boolean {
 
+        if(state.password.length < 1){
+            errorMessage = "Password invalido"
+            return false
+        }
+
         /*
         if(!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
             errorMessage = "Email invalido"
             return false
         }
-        else if(state.password.length < 6){
+        else if(state.password.length < 1){
             errorMessage = "Password invalido"
             return false
-        }
-                */
+        }*/
+
         return true
     }
 }

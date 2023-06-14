@@ -1,5 +1,6 @@
 package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,12 +22,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -38,6 +41,7 @@ import com.savasapp.ecommerceappmvvm.android.Blue500
 import com.savasapp.ecommerceappmvvm.android.R
 import com.savasapp.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 
 @Composable
 fun LoginContent(navController: NavHostController,
@@ -45,6 +49,15 @@ fun LoginContent(navController: NavHostController,
                  vm : LoginViewModel = hiltViewModel()){
 
     val state = vm.state
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = vm.errorMessage){
+        if(vm.errorMessage != ""){
+            Toast.makeText(context , vm.errorMessage, Toast.LENGTH_SHORT).show()
+            vm.errorMessage = ""
+        }
+
+    }
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
@@ -82,7 +95,9 @@ fun LoginContent(navController: NavHostController,
                 backgroundColor = Color.White.copy(alpha = 0.5f),
 
                 ) {
-                Column (modifier = Modifier.padding(10.dp).verticalScroll(rememberScrollState())) {
+                Column (modifier = Modifier
+                    .padding(10.dp)
+                    .verticalScroll(rememberScrollState())) {
                     Text(modifier = Modifier.padding(bottom = 20.dp),
                         text = "Sing in",
                         fontWeight = FontWeight.Bold,
@@ -102,7 +117,8 @@ fun LoginContent(navController: NavHostController,
                         label = "Password",
                         icon = Icons.Default.Email,
                         onValueChange = { vm.onPasswordInput(it) },
-                        keyboardType = KeyboardType.Password
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
