@@ -22,9 +22,7 @@ fun Login( navController: NavHostController,vm: LoginViewModel = hiltViewModel()
     when(val response = vm.loginResponse){
 
         Resource.Loading -> {
-            Box(modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center){
-                CircularProgressIndicator() }
+            CircleProgressBar()
         }
         is Resource.Success -> {
             LaunchedEffect(Unit){

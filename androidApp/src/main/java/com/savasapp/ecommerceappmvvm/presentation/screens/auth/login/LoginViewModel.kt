@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.savasapp.ecommerceappmvvm.domain.model.User
+import com.savasapp.ecommerceappmvvm.domain.model.AuthResponse
 import com.savasapp.ecommerceappmvvm.domain.repository.Resource
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase)  
 
     var errorMessage by mutableStateOf("")
 
-    var loginResponse by mutableStateOf<Resource<User>?>(null)
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
             private set
 
     fun login() = viewModelScope.launch {

@@ -1,5 +1,6 @@
 package com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,12 +26,14 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -48,6 +51,16 @@ import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.Register
 fun RegisterContet(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()) {
 
     val state = vm.state
+    val context = LocalContext.current
+
+    
+    LaunchedEffect(key1 = vm.errorMessage){
+        if(vm.errorMessage != ""){
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT).show()
+            vm.errorMessage = ""
+        }
+    }
+
 
     Box(
         modifier = Modifier
@@ -69,11 +82,13 @@ fun RegisterContet(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVie
             })
         )
 
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+            //    .verticalScroll(rememberScrollState())
+            ,
+              horizontalAlignment = Alignment.CenterHorizontally
         )
         {
             Row(
@@ -188,7 +203,7 @@ fun RegisterContet(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVie
 
                     DefaultButton(modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp), text = "Confirmar", onClick = { })
+                        .height(60.dp), text = "Confirmar", onClick = {vm.register() })
                 }
             }
         }

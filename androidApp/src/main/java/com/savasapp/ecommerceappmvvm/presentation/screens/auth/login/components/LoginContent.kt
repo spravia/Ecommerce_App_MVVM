@@ -135,8 +135,10 @@ fun LoginContent(navController: NavHostController,
                         horizontalArrangement = Arrangement.Center) {
                         Text(text = "Don't have an account?")
                         Spacer(modifier = Modifier.width(20.dp))
-                        Text(text = "Sing up", color  = Blue500, fontWeight = FontWeight.Bold,
-                             modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) })
+                        Text(modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) },
+                            text = "Sing up",
+                            color  = Blue500,
+                            fontWeight = FontWeight.Bold )
                     }
                 }
             }

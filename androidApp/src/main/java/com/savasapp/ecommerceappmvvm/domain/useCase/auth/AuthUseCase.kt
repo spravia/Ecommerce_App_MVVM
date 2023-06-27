@@ -1,3 +1,5 @@
 package com.savasapp.ecommerceappmvvm.domain.useCase.auth
 
-data class AuthUseCase( val login : LoginUseCase )
+import javax.inject.Inject
+
+data class AuthUseCase @Inject constructor( val login : LoginUseCase,  val register : RegisterUseCase    )
