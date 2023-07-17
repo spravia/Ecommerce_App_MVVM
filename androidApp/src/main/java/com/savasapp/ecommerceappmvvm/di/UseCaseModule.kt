@@ -3,8 +3,10 @@ package com.savasapp.ecommerceappmvvm.di
 
 import com.savasapp.ecommerceappmvvm.domain.repository.AuthRepository
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
+import com.savasapp.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
+import com.savasapp.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import dagger.Module
 import dagger.Provides
@@ -19,6 +21,9 @@ object UseCaseModule {
     @Provides
     fun provideAuthCase(authRepository: AuthRepository) = AuthUseCase(
                              login = LoginUseCase(authRepository),
-                             register = RegisterUseCase(authRepository)  )
+                             register = RegisterUseCase(authRepository) ,
+                             saveSession = SaveSessionUseCase(authRepository),
+                             getSessionData = GetSessionDataUseCase(authRepository)
+                                    )
 
 }

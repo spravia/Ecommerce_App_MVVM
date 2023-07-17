@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.savasapp.ecommerceappmvvm.domain.model.AuthResponse
+import com.savasapp.ecommerceappmvvm.domain.model.RegisterResponse
 import com.savasapp.ecommerceappmvvm.domain.model.User
 import com.savasapp.ecommerceappmvvm.domain.repository.Resource
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
@@ -21,16 +22,16 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     var state by mutableStateOf(RegisterState())
     var errorMessage by mutableStateOf("")
 
-    var registerResponse by mutableStateOf<Resource<AuthResponse>?>(null)
+    var registerResponse by mutableStateOf<Resource<RegisterResponse>?>(null)
 
     fun register() = viewModelScope.launch {
 
         if(isValidForm()) {
             val user = User(
                 id = 0,
-                name = state.name,
-                lastname =  state.lastName,
-                phone = state.phone,
+                nombres = state.name,
+                apellidos =  state.lastName,
+                telefono  = state.phone,
                 email = state.email,
                 password = state.password
             )
@@ -78,6 +79,9 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
             return false
         }else  if(state.password == ""){
             errorMessage = "Ingrese el password"
+            return false
+        }else if (state.password != state.confimPassword){
+            errorMessage = "Password no son iguales"
             return false
         }
 

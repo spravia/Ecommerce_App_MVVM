@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -21,9 +22,14 @@ import retrofit2.Response
 fun Register(navController: NavHostController, vm : RegisterViewModel = hiltViewModel())
 {
     when(val response = vm.registerResponse){
+
         Resource.Loading -> {  CircleProgressBar()  }
 
-        is Resource.Success -> { navController.navigate(AuthScreen.Home.route) }
+        is Resource.Success -> {
+        LaunchedEffect(Unit){
+            navController.navigate(AuthScreen.Home.route)
+           }
+        }
 
         is Resource.Failure -> { Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT).show()   }
 

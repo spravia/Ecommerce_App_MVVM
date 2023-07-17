@@ -2,6 +2,7 @@ package com.savasapp.ecommerceappmvvm.data.service
 
 import android.service.autofill.UserData
 import com.savasapp.ecommerceappmvvm.domain.model.AuthResponse
+import com.savasapp.ecommerceappmvvm.domain.model.RegisterResponse
 import com.savasapp.ecommerceappmvvm.domain.model.User
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.LoginState
 import retrofit2.Response
@@ -21,7 +22,7 @@ interface AuthService {
 
     @POST("api/users/adduser")
     @Headers("Content-Type:application/json; charset=utf-8")
-    suspend fun register(@Body user : User): Response<AuthResponse>
+    suspend fun register(@Body user : User): Response<RegisterResponse>
 
 }
 
