@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.savasapp.ecommerceappmvvm.domain.model.AuthResponse
 import com.savasapp.ecommerceappmvvm.domain.model.RegisterResponse
+import com.savasapp.ecommerceappmvvm.domain.model.Rol
 import com.savasapp.ecommerceappmvvm.domain.model.User
 import com.savasapp.ecommerceappmvvm.domain.repository.Resource
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
@@ -24,16 +25,20 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     var registerResponse by mutableStateOf<Resource<RegisterResponse>?>(null)
 
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
+
     fun register() = viewModelScope.launch {
 
         if(isValidForm()) {
             val user = User(
-                id = 0,
                 nombres = state.name,
                 apellidos =  state.lastName,
                 telefono  = state.phone,
                 email = state.email,
-                password = state.password
+                password = state.password,
+                roles = Rol(id= 0,nombreRole = "CLIENT", image = "NULL", route = "NULL", idUsuarioECommerce = 0)
             )
 
             registerResponse = Resource.Loading

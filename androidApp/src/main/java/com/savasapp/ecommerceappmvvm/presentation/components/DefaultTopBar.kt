@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components
+package com.savasapp.ecommerceappmvvm.presentation.components
 
 import android.icu.text.CaseMap.Title
 import androidx.compose.material.Icon
@@ -19,7 +19,7 @@ fun DefaultTopAppBar(
     navController:NavHostController?
 ) {
     TopAppBar(title = { Text(text = title, fontSize = 19.sp)},
-        backgroundColor = Color.White,
+        backgroundColor = Color.Blue,
         navigationIcon = {
             if (upAvailable) {
             IconButton(onClick = {  navController?.popBackStack() }) {

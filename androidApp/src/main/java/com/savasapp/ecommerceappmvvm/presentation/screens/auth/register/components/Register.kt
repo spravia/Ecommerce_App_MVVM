@@ -27,7 +27,11 @@ fun Register(navController: NavHostController, vm : RegisterViewModel = hiltView
 
         is Resource.Success -> {
         LaunchedEffect(Unit){
-            navController.navigate(AuthScreen.Home.route)
+            //vm.saveSession(response.data)
+            navController.navigate(AuthScreen.Home.route) {
+                popUpTo(AuthScreen.Login.route) {inclusive = true}
+
+            }
            }
         }
 

@@ -10,7 +10,7 @@ data class User(
     @SerializedName("email") val email: String,
     @SerializedName("telefono") val telefono: String,
     @SerializedName("password") val password: String,
-    @SerializedName("roles") val roles: String? = ""
+    @SerializedName("roles") val roles: Rol? = null
 ) {
     fun toJson(): String = Gson().toJson(this)
 

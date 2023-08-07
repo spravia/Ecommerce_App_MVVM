@@ -69,6 +69,9 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //Async Image
+    implementation("io.coil-kt:coil-compose:2.2.2")
 }
 
 

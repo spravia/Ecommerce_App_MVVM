@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.savasapp.ecommerceappmvvm.android.MyApplicationTheme
-import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components.DefaultTopAppBar
+import com.savasapp.ecommerceappmvvm.presentation.components.DefaultTopAppBar
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.components.Register
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.components.RegisterContet
 
