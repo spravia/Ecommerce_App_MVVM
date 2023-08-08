@@ -7,5 +7,6 @@ interface AuthLocalDataSource {
 
     suspend fun saveSession(authResponse: AuthResponse)
     fun getSessionData() : Flow<AuthResponse>
+    suspend fun logout()
 
 }

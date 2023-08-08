@@ -33,7 +33,7 @@ fun RolesContent(paddingValues: PaddingValues, navController: NavHostController,
 
     val data = vm.authReponse
 
-    val list = arrayListOf<String>("admin/home", "client/home")
+    val list = arrayListOf<String>("admin_graph", "client_graph")
 
     LazyColumn(
         modifier = Modifier
@@ -48,7 +48,9 @@ fun RolesContent(paddingValues: PaddingValues, navController: NavHostController,
              items = list ?: arrayListOf()
          ) {
              Column(modifier = Modifier.clickable {
-                navController.navigate(route = Graph.CLIENT){
+
+               //TODO uso de popUp
+                navController.navigate(route = it ){
                     popUpTo(route = Graph.ROLES) {inclusive = true}
                 }
              })

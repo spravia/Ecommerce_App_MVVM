@@ -4,6 +4,7 @@ package com.savasapp.ecommerceappmvvm.di
 import com.savasapp.ecommerceappmvvm.domain.repository.AuthRepository
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
+import com.savasapp.ecommerceappmvvm.domain.useCase.auth.LogOutUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
@@ -23,7 +24,8 @@ object UseCaseModule {
                              login = LoginUseCase(authRepository),
                              register = RegisterUseCase(authRepository) ,
                              saveSession = SaveSessionUseCase(authRepository),
-                             getSessionData = GetSessionDataUseCase(authRepository)
-                                    )
+                             getSessionData = GetSessionDataUseCase(authRepository),
+                             logOut = LogOutUseCase(authRepository)
+                    )
 
 }

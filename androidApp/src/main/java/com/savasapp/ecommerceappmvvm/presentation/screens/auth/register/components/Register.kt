@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.savasapp.ecommerceappmvvm.domain.repository.Resource
+import com.savasapp.ecommerceappmvvm.presentation.navigation.Graph
 import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.components.CircleProgressBar
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.RegisterViewModel
@@ -28,7 +29,7 @@ fun Register(navController: NavHostController, vm : RegisterViewModel = hiltView
         is Resource.Success -> {
         LaunchedEffect(Unit){
             //vm.saveSession(response.data)
-            navController.navigate(AuthScreen.Home.route) {
+            navController.navigate(Graph.CLIENT) {
                 popUpTo(AuthScreen.Login.route) {inclusive = true}
 
             }

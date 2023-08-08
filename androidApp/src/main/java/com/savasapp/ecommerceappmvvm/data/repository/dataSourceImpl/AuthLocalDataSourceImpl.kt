@@ -10,5 +10,6 @@ class AuthLocalDataSourceImpl constructor(private val authDataStore: AuthDataSto
     override suspend fun saveSession(authResponse: AuthResponse) = authDataStore.saveUser(authResponse)
 
     override fun getSessionData(): Flow<AuthResponse> = authDataStore.getData()
+    override suspend fun logout() = authDataStore.delete()
 
 }
