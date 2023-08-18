@@ -1,10 +1,11 @@
-package com.savasapp.ecommerceappmvvm.presentation.navigation
+package com.savasapp.ecommerceappmvvm.presentation.navigation.graph.auth
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.savasapp.ecommerceappmvvm.presentation.navigation.Graph
+import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.auth.AuthScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.LoginScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.RegisterScreen
 

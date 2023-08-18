@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.navigation.screen
+package com.savasapp.ecommerceappmvvm.presentation.navigation.screen.client
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
@@ -17,3 +17,4 @@ sealed class ClientScreen(
     object Profile : ClientScreen("client/profile", title = "Perfil", icon = Icons.Default.Person)
 
 }
+

@@ -38,7 +38,7 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
                 telefono  = state.phone,
                 email = state.email,
                 password = state.password,
-                roles = Rol(id= 0,nombreRole = "CLIENT", image = "NULL", route = "NULL", idUsuarioECommerce = 0)
+                roles = "CLIENT"
             )
 
             registerResponse = Resource.Loading

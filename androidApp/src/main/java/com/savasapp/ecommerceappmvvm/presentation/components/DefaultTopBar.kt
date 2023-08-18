@@ -19,7 +19,7 @@ fun DefaultTopAppBar(
     navController:NavHostController?
 ) {
     TopAppBar(title = { Text(text = title, fontSize = 19.sp)},
-        backgroundColor = Color.Blue,
+        backgroundColor = Color.White,
         navigationIcon = {
             if (upAvailable) {
             IconButton(onClick = {  navController?.popBackStack() }) {

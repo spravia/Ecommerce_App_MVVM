@@ -29,6 +29,7 @@ class AuthDataStore constructor( private  val dataStore: DataStore<Preferences>)
     }
 
 
+            //TODO uso de Flow
     fun getData(): Flow<AuthResponse>
     {
             val dataStoreKey = stringPreferencesKey(AUTH_KEY)

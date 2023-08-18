@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.ClientScreen
+import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.client.ClientScreen
 
 @Composable
 fun RowScope.ClienteBottomBarItem(

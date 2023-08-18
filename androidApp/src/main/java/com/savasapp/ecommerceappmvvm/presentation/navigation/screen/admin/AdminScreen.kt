@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.navigation.screen
+package com.savasapp.ecommerceappmvvm.presentation.navigation.screen.admin
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List

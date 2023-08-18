@@ -71,6 +71,9 @@ dependencies {
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+    //File transformation
+    implementation("commons-io:commons-io:2.7")
+
     //Async Image
     implementation("io.coil-kt:coil-compose:2.2.2")
 }

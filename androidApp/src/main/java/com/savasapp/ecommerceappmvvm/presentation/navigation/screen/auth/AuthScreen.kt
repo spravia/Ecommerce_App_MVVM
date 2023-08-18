@@ -1,4 +1,4 @@
-package com.savasapp.ecommerceappmvvm.presentation.navigation.screen
+package com.savasapp.ecommerceappmvvm.presentation.navigation.screen.auth
 
 sealed class AuthScreen(val route : String){
     object Login : AuthScreen("login")

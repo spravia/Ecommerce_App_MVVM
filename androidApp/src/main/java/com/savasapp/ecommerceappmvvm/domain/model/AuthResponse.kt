@@ -8,6 +8,7 @@ data class AuthResponse(
     @SerializedName("nombres") val name : String? = null,
     @SerializedName("apellidos") val lastname : String? = null,
     @SerializedName("telefono") val phone: String? = null,
+    @SerializedName("correo") val mail : String? = null,
     @SerializedName("roles") val roles : String? = null
 ){
     fun toJson(): String = Gson().toJson(this)

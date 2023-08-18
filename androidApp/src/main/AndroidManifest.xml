@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
- 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+    <!--uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/-->
 
+    <uses-permission
+            android:name="android.permission.CAMERA"
+            android:required="true"
+            android:requiredFeature="true"
+        />
+    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage"
+        />
+
+    <uses-permission
+         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+         tools:ignore="ScopedStorage"
+         />
 
     <application
         android:name="com.savasapp.ecommerceappmvvm.presentation.EcommerceAppMVVM"
@@ -23,5 +42,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="com.savasapp.ecommerceappmvvm.fileprovider"
+            android:name="com.savasapp.ecommerceappmvvm.presentation.util.ComposeFileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+        />
+
+
+        <meta-data
+            android:name="android.support.FILE_PROVIDERS_PATH"
+            android:resource="@xml/file_paths"
+            />
+
     </application>
 </manifest> 

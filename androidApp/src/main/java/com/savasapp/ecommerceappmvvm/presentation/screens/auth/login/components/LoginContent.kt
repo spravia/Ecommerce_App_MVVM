@@ -40,7 +40,7 @@ import androidx.navigation.NavHostController
 import com.savasapp.ecommerceappmvvm.android.Blue500
 import com.savasapp.ecommerceappmvvm.android.R
 import com.savasapp.ecommerceappmvvm.presentation.components.DefaultTextField
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.auth.AuthScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 
 @Composable

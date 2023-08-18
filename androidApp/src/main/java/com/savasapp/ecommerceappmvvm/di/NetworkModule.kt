@@ -2,6 +2,7 @@ package com.savasapp.ecommerceappmvvm.di
 
 import com.savasapp.ecommerceappmvvm.core.Config
 import com.savasapp.ecommerceappmvvm.data.service.AuthService
+import com.savasapp.ecommerceappmvvm.data.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +37,12 @@ object NetworkModule {
     fun provideAuthService(retrofit: Retrofit) : AuthService {
         return retrofit.create(AuthService::class.java)
     }
+
+
+      @Provides
+      @Singleton
+      fun provideUsersService(retrofit: Retrofit) : UserService {
+          return retrofit.create(UserService::class.java)
+      }
+
 }

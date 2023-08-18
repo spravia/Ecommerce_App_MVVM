@@ -1,6 +1,5 @@
 package com.savasapp.ecommerceappmvvm.presentation.screens.roles.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +15,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,8 +22,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.savasapp.ecommerceappmvvm.presentation.navigation.Graph
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.RolesScreen
 
 @Composable
 fun RolesContent(paddingValues: PaddingValues, navController: NavHostController,
@@ -51,7 +47,7 @@ fun RolesContent(paddingValues: PaddingValues, navController: NavHostController,
 
                //TODO uso de popUp
                 navController.navigate(route = it ){
-                    popUpTo(route = Graph.ROLES) {inclusive = true}
+                  //  popUpTo(route = Graph.ROLES) {inclusive = true}
                 }
              })
              {

@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.savasapp.ecommerceappmvvm.android.MyApplicationTheme
-import com.savasapp.ecommerceappmvvm.presentation.navigation.graph.RootNavGraph
+import com.savasapp.ecommerceappmvvm.presentation.navigation.root.RootNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

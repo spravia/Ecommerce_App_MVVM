@@ -10,4 +10,7 @@ object Graph {
     const val  CLIENT = "client_graph"
 
     const val  ADMIN = "admin_graph"
+
+    //TODO pasar parametro por NavController
+    const val PROFILE = "profile_graph"
 }

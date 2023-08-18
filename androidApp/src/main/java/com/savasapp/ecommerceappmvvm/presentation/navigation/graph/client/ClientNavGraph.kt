@@ -1,16 +1,16 @@
-package com.savasapp.ecommerceappmvvm.presentation.navigation.graph
+package com.savasapp.ecommerceappmvvm.presentation.navigation.graph.client
 
 import androidx.compose.runtime.Composable
 
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.savasapp.ecommerceappmvvm.presentation.navigation.Graph
-import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.ClientScreen
+import com.savasapp.ecommerceappmvvm.presentation.navigation.graph.profile.ProfileNavGraph
+import com.savasapp.ecommerceappmvvm.presentation.navigation.screen.client.ClientScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.client.home.category.list.ClientProductListScreen
 import com.savasapp.ecommerceappmvvm.presentation.screens.client.home.product.list.ClienteCategoryListScreen
-import com.savasapp.ecommerceappmvvm.presentation.screens.profile.ProfileScreen
+import com.savasapp.ecommerceappmvvm.presentation.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navController: NavHostController){
@@ -28,7 +28,9 @@ fun ClientNavGraph(navController: NavHostController){
         }
 
         composable(route = ClientScreen.Profile.route){
-            ProfileScreen()
+            ProfileScreen(navController=navController)
         }
+
+        ProfileNavGraph(navController)
     }
 }
