@@ -35,6 +35,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase)  
     init {
         getSessionData()
     }
+
     private fun getSessionData() = viewModelScope.launch {
         authUseCase.getSessionData().collect(){ data ->
 

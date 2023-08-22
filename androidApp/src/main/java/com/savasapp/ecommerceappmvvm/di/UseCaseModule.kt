@@ -9,6 +9,7 @@ import com.savasapp.ecommerceappmvvm.domain.useCase.auth.LogOutUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
+import com.savasapp.ecommerceappmvvm.domain.useCase.auth.UpdateSessionUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.users.UpdateUserUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.users.UsersUseCase
 import dagger.Module
@@ -27,7 +28,8 @@ object UseCaseModule {
                              register = RegisterUseCase(authRepository) ,
                              saveSession = SaveSessionUseCase(authRepository),
                              getSessionData = GetSessionDataUseCase(authRepository),
-                             logOut = LogOutUseCase(authRepository)
+                             logOut = LogOutUseCase(authRepository),
+                             updateSession = UpdateSessionUseCase(authRepository)
                     )
 
 

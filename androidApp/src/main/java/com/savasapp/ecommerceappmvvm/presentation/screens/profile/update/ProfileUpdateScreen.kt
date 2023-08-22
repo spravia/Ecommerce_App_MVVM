@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.savasapp.ecommerceappmvvm.presentation.components.DefaultTopAppBar
 import com.savasapp.ecommerceappmvvm.presentation.screens.profile.update.components.ProfileUpdateContent
+import com.savasapp.ecommerceappmvvm.presentation.screens.profile.update.components.UpdateUser
 
 
-
-                                   //TODO pasar parametro por NavController
+//TODO pasar parametro por NavController
 @Composable
 fun ProfileUpdateScreen(navController: NavHostController, userParam : String){
 
@@ -20,6 +20,10 @@ fun ProfileUpdateScreen(navController: NavHostController, userParam : String){
 
     ) {paddingValues ->
         ProfileUpdateContent(paddingValues = paddingValues)
+
+
     }
+      //Pantalla de datos actualizados
+    UpdateUser()
 
 }

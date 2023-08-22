@@ -12,6 +12,7 @@ import com.savasapp.ecommerceappmvvm.domain.model.User
 import com.savasapp.ecommerceappmvvm.domain.repository.Resource
 import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.components.RegisterState
+import com.savasapp.ecommerceappmvvm.presentation.screens.auth.register.components.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,17 +33,9 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     fun register() = viewModelScope.launch {
 
         if(isValidForm()) {
-            val user = User(
-                nombres = state.name,
-                apellidos =  state.lastName,
-                telefono  = state.phone,
-                email = state.email,
-                password = state.password,
-                roles = "CLIENT"
-            )
 
-            registerResponse = Resource.Loading
-            val result = authUseCase.register(user)
+            registerResponse = Resource.Loading     //TODO aplicando MAPPER de RegisterStateMapper
+            val result = authUseCase.register(state.toUser())
             registerResponse = result
         }
     }

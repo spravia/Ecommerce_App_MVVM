@@ -160,7 +160,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 30.dp),
-                    onClick = {  vm.update()}
+                    onClick = {  vm.update() }
                 )
                 {
                     Text(text = "Update information")

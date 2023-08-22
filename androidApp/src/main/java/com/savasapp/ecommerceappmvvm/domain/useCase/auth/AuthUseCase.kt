@@ -7,5 +7,6 @@ data class AuthUseCase @Inject constructor(
     val register : RegisterUseCase,
     val saveSession: SaveSessionUseCase,
     val getSessionData : GetSessionDataUseCase,
-    val logOut: LogOutUseCase
+    val logOut: LogOutUseCase,
+    val updateSession : UpdateSessionUseCase
     )

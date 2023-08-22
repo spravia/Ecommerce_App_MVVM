@@ -88,6 +88,8 @@ class AuthRepositoryImpl(private val authRemoteDataSource : AuthRemoteDataSource
     }
 
     override suspend fun saveSession(authResponse: AuthResponse) = authLocalDataSource.saveSession(authResponse)
+    override suspend fun updateSession(user: User) = authLocalDataSource.updateSession(user)
+
     override fun getSessionData(): Flow<AuthResponse> = authLocalDataSource.getSessionData()
     override suspend fun logOut() = authLocalDataSource.logout()
 

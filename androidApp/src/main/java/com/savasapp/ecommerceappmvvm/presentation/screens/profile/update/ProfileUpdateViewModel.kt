@@ -14,6 +14,7 @@ import com.savasapp.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.users.UpdateUserUseCase
 import com.savasapp.ecommerceappmvvm.domain.useCase.users.UsersUseCase
 import com.savasapp.ecommerceappmvvm.presentation.screens.profile.update.components.ProfileUpdateState
+import com.savasapp.ecommerceappmvvm.presentation.screens.profile.update.mapper.toUser
 import com.savasapp.ecommerceappmvvm.presentation.util.ComposeFileProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -48,13 +49,16 @@ class ProfileUpdateViewModel @Inject constructor(
     var updateResponse by mutableStateOf<Resource<User>?>(null)
         private set
 
-    fun update() = viewModelScope.launch {
-        user.nombres = state.name
-        user.apellidos = state.lastName
-        user.telefono = state.phone
 
-        updateResponse = Resource.Loading
-        val result = userUseCase.updateUser(user)
+    fun updateUserSession() = viewModelScope.launch {
+        authUseCase.updateSession(state.toUser(user.id))
+    }
+
+    fun update() = viewModelScope.launch {
+
+                                         //TODO haciendo MAPPER
+        updateResponse = Resource.Loading                    //TODO forma de implementar UpdateStateMapper
+        val result = userUseCase.updateUser(state.toUser(user.id))
 
         updateResponse = result
 

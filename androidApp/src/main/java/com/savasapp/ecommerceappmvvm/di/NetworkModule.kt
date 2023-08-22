@@ -1,12 +1,16 @@
 package com.savasapp.ecommerceappmvvm.di
 
 import com.savasapp.ecommerceappmvvm.core.Config
+import com.savasapp.ecommerceappmvvm.data.datastore.AuthDataStore
 import com.savasapp.ecommerceappmvvm.data.service.AuthService
 import com.savasapp.ecommerceappmvvm.data.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,6 +23,21 @@ import javax.inject.Singleton
 @InstallIn( SingletonComponent::class)
 object NetworkModule {
 
+
+                //TODO para agregar el token a la petición
+      @Provides
+      @Singleton
+      fun provideOkHttpClient(dataStore:AuthDataStore) = OkHttpClient.Builder().addInterceptor{
+
+          val token = runBlocking {
+                                     dataStore.getData().first().name
+              }
+
+            val newRequest = it.request().newBuilder().addHeader("Auto", token?: "").build()
+
+            it.proceed(newRequest)
+
+      }.build()
 
     @Provides
     @Singleton
