@@ -3,6 +3,7 @@ package com.savasapp.ecommerceappmvvm.di
 import com.savasapp.ecommerceappmvvm.core.Config
 import com.savasapp.ecommerceappmvvm.data.datastore.AuthDataStore
 import com.savasapp.ecommerceappmvvm.data.service.AuthService
+import com.savasapp.ecommerceappmvvm.data.service.CategoryService
 import com.savasapp.ecommerceappmvvm.data.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,7 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 import javax.inject.Singleton
 
@@ -63,5 +65,12 @@ object NetworkModule {
       fun provideUsersService(retrofit: Retrofit) : UserService {
           return retrofit.create(UserService::class.java)
       }
+
+      @Provides
+      @Singleton
+      fun provideCategoriesService(retrofit: Retrofit) : CategoryService {
+          return retrofit.create(CategoryService::class.java)
+      }
+
 
 }

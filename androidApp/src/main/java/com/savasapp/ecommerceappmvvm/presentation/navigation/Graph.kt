@@ -13,4 +13,7 @@ object Graph {
 
     //TODO pasar parametro por NavController
     const val PROFILE = "profile_graph"
+
+    const val ADMIN_CATEGORY = "admin_category_graph"
+
 }

@@ -1,10 +1,13 @@
 package com.savasapp.ecommerceappmvvm.di
 
 import AuthRemoteDataSourceImpl
+import CategoriesRemoteDataSourceImpl
 import UsersRemoteDataSourceImpl
 import com.savasapp.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
+import com.savasapp.ecommerceappmvvm.data.repository.dataSource.CategoriesRemoteDataSource
 import com.savasapp.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
 import com.savasapp.ecommerceappmvvm.data.service.AuthService
+import com.savasapp.ecommerceappmvvm.data.service.CategoryService
 import com.savasapp.ecommerceappmvvm.data.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -20,5 +23,9 @@ object RemoteDataModule {
 
     @Provides
     fun provideUsersRemoteDataSource(userService: UserService) : UsersRemoteDataSource = UsersRemoteDataSourceImpl(userService)
+
+
+    @Provides
+    fun provideCategoryRemoteDataSource(categoryService: CategoryService) : CategoriesRemoteDataSource =CategoriesRemoteDataSourceImpl(categoryService)
 
 }
